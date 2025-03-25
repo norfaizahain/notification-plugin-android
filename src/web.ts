@@ -10,4 +10,13 @@ export class NotificationPluginWeb
     console.log('ECHO', options);
     return options;
   }
+  async checkNotificationPermission(): Promise<{ status: "granted" | "denied" | "not_applicable" }> {
+    console.warn("checkNotificationPermission() is not available on the web.");
+    return { status: "not_applicable" };
+  }
+
+  async sendCustomEvent(options: { message: string }): Promise<{ message: string }> {
+    console.warn("sendCustomEvent() is not available on the web.");
+    return options;
+  }
 }

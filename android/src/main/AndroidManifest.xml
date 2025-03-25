@@ -1,2 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 </manifest>
+<service
+    android:name=".FirebaseMessagingServices"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+    </intent-filter>
+</service>
