@@ -13,29 +13,15 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
 * [`checkNotificationPermission()`](#checknotificationpermission)
-* [`sendCustomEvent(...)`](#sendcustomevent)
+* [`addListener('inAppNotificationTriggered', ...)`](#addlistenerinappnotificationtriggered-)
+* [Interfaces](#interfaces)
+* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### echo(...)
-
-```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
-```
-
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
-
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
-
---------------------
-
 
 ### checkNotificationPermission()
 
@@ -48,18 +34,42 @@ checkNotificationPermission() => Promise<{ status: "granted" | "denied" | "not_a
 --------------------
 
 
-### sendCustomEvent(...)
+### addListener('inAppNotificationTriggered', ...)
 
 ```typescript
-sendCustomEvent(options: { message: string; }) => Promise<{ message: string; }>
+addListener(eventName: notificationEvents, listener: (event: notificationMessage) => void) => Promise<PluginListenerHandle>
 ```
 
-| Param         | Type                              |
-| ------------- | --------------------------------- |
-| **`options`** | <code>{ message: string; }</code> |
+| Param           | Type                                                                                    |
+| --------------- | --------------------------------------------------------------------------------------- |
+| **`eventName`** | <code>'inAppNotificationTriggered'</code>                                               |
+| **`listener`**  | <code>(event: <a href="#notificationmessage">notificationMessage</a>) =&gt; void</code> |
 
-**Returns:** <code>Promise&lt;{ message: string; }&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
 
 --------------------
+
+
+### Interfaces
+
+
+#### PluginListenerHandle
+
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
+
+
+### Type Aliases
+
+
+#### notificationEvents
+
+<code>'inAppNotificationTriggered'</code>
+
+
+#### notificationMessage
+
+<code>{ message: string; }</code>
 
 </docgen-api>

@@ -1,18 +1,20 @@
 package com.tektician.notificationplugin;
-
+// import com.getcapacitor.PluginCall;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-
+// import com.getcapacitor.JSObject;
+import com.getcapacitor.*;
 import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tektician.notificationplugin.NotificationPluginPlugin;
-import com.getcapacitor.Bridge;
-import com.getcapacitor.PluginHandle;
+
+// import com.getcapacitor.Bridge;
+// import com.getcapacitor.PluginHandle;
 
 public class FirebaseMessagingServices extends FirebaseMessagingService {
 
@@ -82,7 +84,7 @@ public class FirebaseMessagingServices extends FirebaseMessagingService {
 
 
     public void triggerEvent(String message) {
-      Bridge bridge = MainActivity.getInstance().getBridge();
+      Bridge bridge = NotificationPluginPlugin.getStaticBridge();
       if(bridge != null) {
 
         PluginHandle pluginHandle = bridge.getPlugin("NotificationPlugin");
@@ -91,11 +93,11 @@ public class FirebaseMessagingServices extends FirebaseMessagingService {
           NotificationPluginPlugin plugin = (NotificationPluginPlugin) pluginHandle.getInstance();
           if (plugin != null) {
             // Call the method on the plugin instance
-            PluginCall call = new PluginCall(plugin, "sendCustomEvent");
-            call.setData(new JSObject().put("message", message));
-
+            // PluginCall call = new PluginCall(plugin, "sendCustomEvent");
+            // call.setData(new JSObject().put("message", message));
             // Resolve the call manually
-            plugin.sendCustomEvent(call);
+            // plugin.sendCustomEvent(call);
+            plugin.triggerCustomEvent(message);
             Log.d("FirebaseMessaging", "Triggering custom event.");
 
           } else {

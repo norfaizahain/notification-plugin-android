@@ -1,10 +1,12 @@
 package com.tektician.notificationplugin;
-
+import android.app.NotificationManager;
 import android.util.Log;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import com.getcapacitor.JSObject;
+import android.content.Context;
+import android.os.Build;
 
 public class NotificationPlugin {
 
@@ -31,16 +33,17 @@ public class NotificationPlugin {
     }
 
     // Send Custom Event
-    public JSObject sendCustomEvent(String message) {
-        JSObject eventData = new JSObject();
-        eventData.put("message", message);
-        return eventData;
-    }
+    // public JSObject sendCustomEvent(String message) {
+    //     JSObject eventData = new JSObject();
+    //     eventData.put("message", message);
+    //     return eventData;
+    // }
 
-    public String echo(String value) {
-        Log.i("Echo", value);
-        return value;
-    }
+
+    // public String echo(String value) {
+    //     Log.i("Echo", value);
+    //     return value;
+    // }
 
 
 
